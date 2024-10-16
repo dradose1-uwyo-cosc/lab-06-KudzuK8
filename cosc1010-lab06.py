@@ -1,12 +1,12 @@
-# Your Name Here
+# Nelia Koontz
 # UWYO COSC 1010
-# Submission Date
+# 10/16/2024
 # Lab 06
-# Lab Section: 
-# Sources, people worked with, help given to: 
-# your
-# comments
-# here
+# Lab Section: 15
+# Sources, people worked with, help given to: the dictionaries chapter of the book and Emmanuel
+#(the lab teacher)
+# I am always trying to do key, value without .items() and that makes an error that there are
+# too many things I am trying to call
 
 
 random_string = """
@@ -83,7 +83,17 @@ print(len(random_string)) # Print out the size for reference
 #Load all the elements into a dictionary
 #Will need to first declare a dictionary 
 
+count_dict = {}
+
 # Output: each letter and its corresponding occurrence in alphabetical order
+
+for letter in random_string:
+    if letter not in count_dict:
+        count_dict[letter] = 1
+    else:
+        count_dict[letter] += 1
+
+print(sorted(count_dict.items()))
 
 print("*"*75)
 # Output which letter occurred the most 
@@ -91,10 +101,30 @@ print("*"*75)
 most_occurred = ""
 least_occurred = ""
 
+number = 0
+
+for key, value in count_dict.items():
+    if value > number:
+        number = value
+        most_occurred = key
+
+for key, value in count_dict.items():
+    if value < number:
+        number = value
+        least_occurred = key
+
 print(f"The letter that occurred the most is {most_occurred}")
 print("*"*75)
 # Output which letter occurred the least 
-print(f"The letter that occurred the most is {least_occurred}")
+print(f"The letter that occurred the least is {least_occurred}")
 print("*"*75)
 
 # Output what the percentage of the string each character is, again in alphabetical
+
+count_perc = {}
+
+for key, value in count_dict.items():
+    value = value/len(random_string)*100
+    count_perc[key] = value
+
+print(sorted(count_perc.items()))
